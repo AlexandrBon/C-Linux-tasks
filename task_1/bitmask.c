@@ -18,11 +18,12 @@ int is_correct_bitmask(uint32_t bitmask) {
 
 int main(int argc, char *argv[]) {
 	if (argc < 2) {
-		printf("USAGE: ./is_correct_bitmask <32bit number[s]>\n");
+		printf("USAGE: ./is_correct_bitmask <uint32_t[s]>\n");
 	}
 	for (int i = 1; i < argc; i++) {
-		int num = atoi(argv[i]);
-		printf("result for %d: %s\n", num, is_correct_bitmask((uint32_t)num) ? "true" : "false");
+		char* ptr;
+		uint32_t num = strtoul(argv[i], &ptr, 10);
+		printf("result for %d: %s\n", num, is_correct_bitmask(num) ? "true" : "false");
 	}
 	return 0;
 }
